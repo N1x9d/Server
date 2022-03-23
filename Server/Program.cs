@@ -58,7 +58,7 @@ namespace Server
 
 			process.StartInfo = startInfo;
 
-			process.Start();
+			//process.Start();
 			Thread myThread = new Thread(new ThreadStart(ResponseServer));
 			myThread.Start(); // запускаем поток
 			TcpListener listener = new TcpListener(IPAddress.Any, 20000);
@@ -91,7 +91,7 @@ namespace Server
 							using (	var cl = new RequestSocket())
 							{
 								cl.Connect("tcp://localhost:5555");
-								
+								Console.WriteLine(filename);
 									cl.SendFrame(filename);
 									var message = cl.ReceiveFrameString();
 									histori.Add(new soketInfo(client.Client.RemoteEndPoint.ToString(),message));
